@@ -30,6 +30,13 @@ var Main = React.createClass({
             <h2>Note Builder</h2>
           </div>
           <div className="row">
+            <section className="col-md-6">
+              <h2> Note Builder Portion</h2>
+              
+            </section>
+            <section className="col-md-6">
+              <h2> Note Builder Portion</h2>
+            </section>
           </div>          
         </div>
         <Footer />

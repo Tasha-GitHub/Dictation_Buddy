@@ -14,8 +14,7 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
     return {
-      user: "",
-      pass: ""
+      notes: [{title: "title", content:"content"},{title: "title", content:"content"}] 
     };
   },
 
@@ -29,6 +28,17 @@ var Main = React.createClass({
             <h2>My Notes</h2>
           </div>
           <div className="row">
+            <section  className="notesDiv">
+              {this.state.notes.map(function(search, i) 
+                {return (
+                  <article key={i} className="savedNote">
+                  {search.title} - {search.content}
+                  <br/>
+                  <button className="btn btn-danger" id="delete"> Delete Note</button>
+                  </article>
+                );}
+              )}
+            </section>
           </div>          
         </div>
         <Footer />
