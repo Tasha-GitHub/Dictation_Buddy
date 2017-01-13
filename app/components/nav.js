@@ -12,13 +12,15 @@ var Nav = React.createClass({
   // Here we render the function
   render: function() {
     return (
-      <div className="container">
-        <nav>
-          <p>Naav</p>
+        <nav className="bg-info navbar">
+          <div>
+            <ul className="nav nav-pills" role="tablist">
+              <li role="presentation" className="navigation"><a href="/">Dictation Buddy</a></li>
+              <li role="presentation" className="navigation"><a href="/notes">Saved Notes</a></li>
+              <li role="presentation" className="navigation"><a href="/builder">Note Builder</a></li>
+            </ul>
+          </div>
         </nav>
-
-      
-      </div>
     );
   }
 });

@@ -2,7 +2,8 @@
 var React = require("react");
 
 // Here we include all of the sub-components
-var Form = require("../components/signup");
+var Signup = require("../components/signup");
+var Login = require("../components/login");
 var Nav = require("../components/nav");
 var Footer = require("../components/footer");
 // Requiring our helper for making API calls
@@ -18,32 +19,27 @@ var Main = React.createClass({
       pass: ""
     };
   },
-  // Whenever the button is clicked we'll use setState to add to the clickCounter
-  // Note the syntax for setting the state
-  handleClick: function() {
-    this.setState({ clicks: this.state.clicks + 1 });
-  },
-
-  // Whenever the button is clicked we'll use setState to reset the clickCounter
-  // This will reset the clicks -- and it will be passed ALL children
-  resetClick: function() {
-    this.setState({ clicks: 0 });
-  },
 
   // Here we render the function
   render: function() {
     return (
       <div className="container">
-        <Nav />
-        <div className="row">
-          <h2>Dictation Buddy</h2>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
+        <div className="content">
+          <Nav />
+          <div className="row">
+            <h2>Dictation Buddy</h2>
+            <img src= "../assets/images/dictation.jpg"/>
           </div>
-          <Form />
+          <div className="row">
+            <div className="col-md-6">
+              <h2>About Us</h2>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div className="col-md-6">
+              <p>Sign in block</p>
+            </div>
+          </div>          
         </div>
-        
         <Footer />
       </div>
     );

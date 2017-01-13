@@ -14,7 +14,7 @@ var Footer = React.createClass({
     return (
       <div className="container">
         <nav>
-          <p>Footer</p>
+          <p>&copy; Tasha Casagni</p>
         </nav>
 
       
