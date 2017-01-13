@@ -7,7 +7,7 @@ var React = require("react");
 var helpers = require("../utils/helpers");
 
 // Create the Parent Component
-var Main = React.createClass({
+var Build = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
@@ -69,7 +69,7 @@ var Main = React.createClass({
         <div className="row">
 
           <div className="jumbotron">
-            <h2>All my children: A Tale of Reactive Components</h2>
+            <h2>Build</h2>
             <hr />
             <p>
               <em>Now backed by the power of MongoDB!</em>
@@ -125,4 +125,4 @@ var Main = React.createClass({
 });
 
 // Export the component back for use in other files
-module.exports = Main;
+module.exports = Build;
