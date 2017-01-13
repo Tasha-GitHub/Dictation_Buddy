@@ -32,10 +32,25 @@ var Main = React.createClass({
           <div className="row">
             <section className="col-md-6">
               <h2> Note Builder Portion</h2>
-              
             </section>
             <section className="col-md-6">
               <h2> Note Builder Portion</h2>
+              <article>
+                <h2> Start/Stop</h2>
+                <button className="btn btn-danger" id="delete"> Start</button>
+                <button className="btn btn-danger" id="delete"> Stop</button>                
+              </article>
+              <article>
+                <h2> Note Builder Portion</h2>
+                <button className="btn btn-danger" id="delete"> Bold</button>
+                <button className="btn btn-danger" id="delete"> Under Line</button>
+                <button className="btn btn-danger" id="delete"> Italics </button>                 
+              </article>  
+              <article>
+                <h2> Note Builder Portion</h2>
+                <button className="btn btn-danger" id="delete"> Save</button>
+                <button className="btn btn-danger" id="delete"> Reset</button>                
+              </article>                           
             </section>
           </div>          
         </div>
