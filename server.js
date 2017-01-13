@@ -21,7 +21,7 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 // MongoDB configuration
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dictation_buddy");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/week18Populater");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
@@ -31,6 +31,7 @@ db.on("error", function(err) {
 db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
+
 
 // ================================================================================
 // ROUTER

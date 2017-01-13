@@ -11,7 +11,6 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "/../public/saved.html"));
   });
 
-
     // Main "/" Route. This will redirect the user to our rendered React application
   app.get("/builder", function(req, res) {
     res.sendFile(path.join(__dirname, "/../public/builder.html"));

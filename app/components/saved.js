@@ -17,6 +17,44 @@ var Main = React.createClass({
       notes: [{title: "title", content:"content"},{title: "title", content:"content"}] 
     };
   },
+  //  On load display the number of clicks
+  componentDidMount: function() {
+    console.log("COMPONENT MOUNTED");
+
+    // The moment the page renders on page load, we will retrieve the previous click count.
+    // We will then utilize that click count to change the value of the click state.
+    helpers.getNote("/note/all")
+      .then(function(response) {
+        // Using a ternary operator we can set newClicks to the number of clicks in our response object
+        // If we don't have any clicks in our database, set newClicks to 0
+        var userNotes = response.data[0].notes;
+        this.setState({
+          notes: userNotes
+        });
+        console.log("RESULTS", response);
+        console.log("Saved clicks", userNotes);
+      }.bind(this));
+  },
+
+  deleteNote: function(id){
+    var noteId = id;
+    console.log(noteId);
+    helpers.deleteNote("/note/delete/"+ noteId)
+      .then(function(response) {
+    });
+  },
+
+  renderNotes: function(){
+    var self = this;
+    return this.state.notes.map(function(search, i) {
+      return (
+        <article key={i} className="savedNote">{search.title} - {search.content}
+          <br/>
+          <button type="button" className="btn btn-danger" onClick={self.deleteNote.bind(null, search._id)} id="delete" data-id={search._id}> Delete Note</button>
+        </article>
+      );
+    });
+  },
 
   // Here we render the function
   render: function() {
@@ -29,15 +67,7 @@ var Main = React.createClass({
           </div>
           <div className="row">
             <section  className="notesDiv">
-              {this.state.notes.map(function(search, i) 
-                {return (
-                  <article key={i} className="savedNote">
-                  {search.title} - {search.content}
-                  <br/>
-                  <button className="btn btn-danger" id="delete"> Delete Note</button>
-                  </article>
-                );}
-              )}
+              {this.renderNotes()}
             </section>
           </div>          
         </div>
