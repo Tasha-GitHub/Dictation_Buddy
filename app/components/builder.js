@@ -82,14 +82,17 @@ var Main = React.createClass({
         <div className="content">
           <Nav />
           <div className="row">
-            <h2>Note Builder</h2>
+            <h1>Note Builder</h1>
           </div>
           <div className="row">
-            <section className="col-md-6">
+            <section className="col-md-7 noteBuilder">
               <h2> Push start to start creating your personal notes with Note Buddy!</h2>
               {this.state.body}
             </section>
-            <section className="col-md-6">
+            <section className="col-md-1">
+              
+            </section>
+            <section className="col-md-4 controls">
               <h4> Note Builder Portion</h4>
               <article>
                 <h2> Start/Stop</h2>

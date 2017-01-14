@@ -1,0 +1,133 @@
+/*stickey footer*/
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+}
+
+#appSaved {
+  min-height: 100% !important;
+}
+
+.container{
+	min-height: 100vh;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	/*min-height: 100%;*/
+  	display: flex;
+  	flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  background-color: #A1A8B2;
+}
+
+/*bootstrap overrides */
+
+
+.bg-info{
+	padding: 0px;
+	margin: 0px;
+}
+
+.row{
+	padding: 0px;
+	margin: 0px;
+}
+
+
+/*banner styling*/
+.banner{
+	background-image: url("../images/dictation.jpg");
+	background-size: cover;
+	min-height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1{
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 450%;
+	text-shadow: 2px 2px #000000;
+}
+
+/*footer styling*/
+footer{
+	text-align: center;
+	background-color: #44474C;
+	min-height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/*nav styling*/
+nav{
+	background-color: #FFFFFF !important;
+}
+/*index styling*/
+.signUpDiv{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	margin-top: 60px;
+	padding-top: 30px;
+
+}
+
+.about{
+	margin-top: 30px;
+}
+
+.buttons{
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.signUpBtn{
+	margin-left: 20px;
+}
+/*saved notes*/
+.notesDiv{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.savedNote{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+}
+
+/*note builder styling */
+
+.controls, .noteBuilder{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	margin-left: 30px;
+	background-color: #FFFFFF;
+	min-height: 400px;
+	margin-bottom: 30px;
+
+}
+
+
+
+
+

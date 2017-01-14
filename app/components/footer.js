@@ -12,13 +12,9 @@ var Footer = React.createClass({
   // Here we render the function
   render: function() {
     return (
-      <div className="container">
-        <nav>
+      <footer className="footer">
           <p>&copy; Tasha Casagni</p>
-        </nav>
-
-      
-      </div>
+      </footer>
     );
   }
 });

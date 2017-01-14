@@ -26,19 +26,26 @@ var Main = React.createClass({
       <div className="container">
         <div className="content">
           <Nav />
-          <div className="row">
-            <h2>Dictation Buddy</h2>
-            <img src= "../assets/images/dictation.jpg"/>
+          <div className="row banner">
+            <h1>Dictation Buddy</h1>
           </div>
-          <div className="row">
-            <div className="col-md-6">
+          <div className="row bannerAndSignup">
+            <div className="col-md-6 about">
               <h2>About Us</h2>
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-1">
+              
+            </div>
+            <div className="col-md-4 signUpDiv">
               <p>Log in or Sign up today!</p>
-              <button className="btn btn-primary">Log in</button>
-              <button className="btn btn-primary">Sign up</button>
+              <div className="buttons">
+                <button className="btn btn-primary logInBtn">Log in</button>
+                <button className="btn btn-primary signUpBtn">Sign up</button>                
+              </div>
+            </div>
+            <div className="col-md-1">
+              
             </div>
           </div>          
         </div>

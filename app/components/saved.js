@@ -63,7 +63,7 @@ var Main = React.createClass({
         <div className="content">
           <Nav />
           <div className="row">
-            <h2>My Notes</h2>
+            <h1>My Notes</h1>
           </div>
           <div className="row">
             <section  className="notesDiv">
