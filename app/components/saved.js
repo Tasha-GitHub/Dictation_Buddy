@@ -14,7 +14,7 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
     return {
-      notes: [{title: "title", content:"content"},{title: "title", content:"content"}] 
+      notes: [] 
     };
   },
   //  On load display the number of clicks
