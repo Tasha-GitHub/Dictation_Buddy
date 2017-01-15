@@ -2,7 +2,7 @@
 var React = require("react");
 
 // Creating the Form component
-var Form = React.createClass({
+var Login = React.createClass({
 
   // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
@@ -29,11 +29,11 @@ var Form = React.createClass({
   // Here we describe this component's render method
   render: function() {
     return (
-      <div className="panel panel-default">
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
+      <div className="col-md-3 signUpDiv">
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
               <h4 className="">
-                <strong>Sign Up</strong>
+                <strong>Log in</strong>
               </h4>
 
               {/*
@@ -62,17 +62,17 @@ var Form = React.createClass({
               />
               <br />
               <button
-                className="btn btn-primary"
-                type="submit"
-              >
-                Submit
-              </button>
+                className="btn btn-primary submitBtn"
+                type="submit"> Submit</button>
+              <a href="#/signup"><button className="btn btn-primary signUpBtn">Sign up</button></a>
             </div>
           </form>
+      <div className="buttons">            
       </div>
+    </div>
     );
   }
 });
 
 // Export the component back for use in other files
-module.exports = Form;
+module.exports = Login;

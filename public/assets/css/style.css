@@ -48,7 +48,7 @@ body {
 .banner{
 	background-image: url("../images/dictation.jpg");
 	background-size: cover;
-	min-height: 600px;
+	min-height: 300px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -65,15 +65,24 @@ h1{
 footer{
 	text-align: center;
 	background-color: #44474C;
-	min-height: 70px;
+	min-height: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 10px 0px 0px 0px;
 }
 
 /*nav styling*/
 nav{
-	background-color: #FFFFFF !important;
+	background-color: #44474C !important;
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+}
+
+nav a {
+	color: #FFFFFF;
+	border-radius: 0%;
+
 }
 /*index styling*/
 .signUpDiv{
@@ -81,16 +90,26 @@ nav{
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border-width: 1px;
+	border-width: 3px;
 	border-style: solid;
 	border-color: #000000;
+	width: 300px;
 	margin-top: 60px;
+	margin-left: 40px;
 	padding-top: 30px;
+	background-color: #FFFFFF;
 
 }
 
 .about{
-	margin-top: 30px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	margin-left: 40px;
+
+}
+
+.feature{
+	margin-top: 10px;
 }
 
 .buttons{
@@ -101,17 +120,42 @@ nav{
 .signUpBtn{
 	margin-left: 20px;
 }
+
+.submitBtn{
+	margin-right: 20px;
+}
 /*saved notes*/
 .notesDiv{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
+
 }
 
+.bodyText{
+	min-height: 150px;
+	max-height: 150px;
+	min-width: 200px;
+	max-width: 200px;
+	margin: 0px 10px 0px 10px;
+	overflow-y: scroll;
+}
 .savedNote{
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000000;
+	background-color: #FFFFFF;
+	margin: 30px 40px 30px 30px;
+}
+
+#delete ,#open{
+	margin: 10px 10px 10px 10px;
+}
+
+.noteHighlight{
+	min-height: 250px;
+	max-height: 250px;
+	padding: 10px 10px 10px 10px;
 }
 
 /*note builder styling */
@@ -127,7 +171,13 @@ nav{
 
 }
 
+.controls h4, .noteBuilder h4{
+	text-align: center;
+}
 
+#start ,#stop, #save, #reset{
+	margin: 10px 10px 10px 10px;
+}
 
 
 

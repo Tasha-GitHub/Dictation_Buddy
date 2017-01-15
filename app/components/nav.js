@@ -1,10 +1,6 @@
 // Include React
 var React = require("react");
 
-// Here we include all of the sub-components
-var Form = require("../components/signup");
-// Requiring our helper for making API calls
-var helpers = require("../utils/helpers");
 
 // Create the Parent Component
 var Nav = React.createClass({
