@@ -15,7 +15,7 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
     return {
-      title: "Type Title Here",
+      title: "",
       body: " ",
       recording: true
     };
@@ -45,7 +45,7 @@ var Main = React.createClass({
       p.textContent = transcript;
       if(event.results[0].isFinal){
         self.setState({
-          body: self.state.body + "\n " + transcript
+          body: self.state.body + "\n" + transcript
         });
         p =  document.createElement("p");
         words.appendChild(p);
@@ -65,7 +65,7 @@ var Main = React.createClass({
   },
 
   saveRecording: function(prevProps, prevState){
-    if(this.state.title === "Type Title Here"){
+    if(this.state.title === ""){
       console.log("title required");
       alert("Title is a required field");
       return
@@ -83,6 +83,7 @@ var Main = React.createClass({
     self.setState({
       body: " "
     });
+    location.reload();
   },
 
   stopRecording: function(){
@@ -119,6 +120,7 @@ var Main = React.createClass({
                   id="title"
                   onChange={this.titleChange}
                   required
+                  placeholder = "Type Title Here"
                   />
                 </div>
               </form>

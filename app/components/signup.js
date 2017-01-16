@@ -6,7 +6,7 @@ var Signup = React.createClass({
 
   // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
-    return { term: "" };
+    return { email: "", password: "", loginStatus: false };
   },
 
   // This function will respond to the user input
@@ -30,7 +30,7 @@ var Signup = React.createClass({
   render: function() {
     return (
       <div className="col-md-3 signUpDiv">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div className="form-group">
               <h4 className="">
                 <strong>Sign Up</strong>
@@ -60,16 +60,13 @@ var Signup = React.createClass({
                 required
                 placeholder = "Password"
               />
-              <br />
-              <button
-                className="btn btn-primary submitBtn"
-                type="submit"> Submit</button>
-              <a href="#/login"><button className="btn btn-primary logInBtn">Log In</button></a>
             </div>
           </form>
-      <div className="buttons">            
-      </div>
-    </div>
+          <div className="buttons"> 
+            <a href="#/login"><button className="btn btn-primary loginBtn">Log In</button></a>
+            <a href="#/submit"><button className="btn btn-primary submitBtn">Submit</button></a>           
+          </div>
+        </div>
     );
   }
 });

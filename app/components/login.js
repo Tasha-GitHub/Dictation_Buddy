@@ -30,10 +30,10 @@ var Login = React.createClass({
   render: function() {
     return (
       <div className="col-md-3 signUpDiv">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div className="form-group">
               <h4 className="">
-                <strong>Log in</strong>
+                <strong>Log In</strong>
               </h4>
 
               {/*
@@ -60,15 +60,12 @@ var Login = React.createClass({
                 required
                 placeholder = "Password"
               />
-              <br />
-              <button
-                className="btn btn-primary submitBtn"
-                type="submit"> Submit</button>
-              <a href="#/signup"><button className="btn btn-primary signUpBtn">Sign up</button></a>
             </div>
           </form>
-      <div className="buttons">            
-      </div>
+          <div className="buttons"> 
+            <a href="#/signup"><button className="btn btn-primary signUp">Sign up</button></a>
+            <a href="#/submit"><button className="btn btn-primary submitBtn">Submit</button></a>           
+          </div>
     </div>
     );
   }
