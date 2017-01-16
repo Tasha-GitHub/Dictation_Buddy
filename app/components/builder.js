@@ -23,20 +23,15 @@ var Main = React.createClass({
 
   speechRecorder: function(){
     var self = this;
-    var transcript;
-    //console.log(self);
-    if(!this.state.recording){
-      console.log("recording Off");
-      self.setState({
-        recording:true
-      });
-      return
-    }
-      
+    var transcript;      
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     var recognition = new SpeechRecognition();
     recognition.interimResults = true;
+
+    var p = document.createElement("p");
+    var words = document.querySelector(".noteBuilder");
+    words.appendChild(p);
 
     recognition.addEventListener("result", function(event){
       //console.log(e.results);
@@ -45,25 +40,28 @@ var Main = React.createClass({
       .map(function(result){return result.transcript})
       .join("")
       
-      transcript = "\n" + self.state.body + " " + transcript;
+      //transcript = "\n" + self.state.body + " " + transcript;
       console.log(transcript);
-
-      self.setState({
-        body: transcript
-      });
-
+      p.textContent = transcript;
+      if(event.results[0].isFinal){
+        self.setState({
+          body: self.state.body + "\n " + transcript
+        });
+        p =  document.createElement("p");
+        words.appendChild(p);
+      }
     });
-    //recognition.addEventListener("end",recognition.start);
+    recognition.addEventListener("end",recognition.start);
     recognition.start();
   },
 
   componentDidUpdate: function(prevProps, prevState) {
-    var self = this;
-    // If we have a new search term, run a new search
-    if (prevState.body !== this.state.body) {
-      console.log("UPDATED");
-      self.speechRecorder();
-      };
+    // var self = this;
+    // // If we have a new search term, run a new search
+    // if (prevState.body !== this.state.body) {
+       console.log("UPDATED");
+    //   self.speechRecorder();
+    //   };
   },
 
   saveRecording: function(prevProps, prevState){
@@ -91,6 +89,7 @@ var Main = React.createClass({
     this.setState({
       recording: false
     });
+    // window.location.reload();
   },
   titleChange: function(event){
     this.setState({ 
@@ -123,7 +122,6 @@ var Main = React.createClass({
                   />
                 </div>
               </form>
-              {this.state.body}
             </section>
             <section className="col-md-1">
             </section>
