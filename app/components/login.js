@@ -6,7 +6,7 @@ var Login = React.createClass({
 
   // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
-    return { term: "" };
+    return { email: "", password: "", loginStatus: false};
   },
 
   // This function will respond to the user input

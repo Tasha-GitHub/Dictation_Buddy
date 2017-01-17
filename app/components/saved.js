@@ -14,17 +14,42 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
     return {
-      notes: [] 
+      notes: [],
+      email: "",
+      password: "", 
+      loginStatus: false, 
+      userID: ""
     };
   },
   //  On load display the number of clicks
   componentDidMount: function() {
     console.log("COMPONENT MOUNTED");
+    //localStorage.clear();
+    // grabs user id from local storage and stores it as a state value
+    var userID = localStorage.getItem("userID");
+    var loginStatus = localStorage.getItem("loginStatus");
+    console.log(userID);
+    console.log(loginStatus);
+    this.setState({
+      userID: userID,
+      loginStatus: loginStatus
+    });
+  },
 
+  componentDidUpdate: function(){
+    console.log("COMPONENT Updated");
+    var data = {
+      title: this.state.title,
+      body: this.state.body,
+      id: this.state.userID
+    }
+    console.log(this.state.loginStatus)
+    if(this.state.loginStatus = true ){
     // The moment the page renders on page load, we will retrieve the previous click count.
     // We will then utilize that click count to change the value of the click state.
-    helpers.getNote("/note/all")
+    helpers.getNote("/note/all", data)
       .then(function(response) {
+        console.log(response);
         // Using a ternary operator we can set newClicks to the number of clicks in our response object
         // If we don't have any clicks in our database, set newClicks to 0
         var userNotes = response.data[0].notes;
@@ -34,6 +59,7 @@ var Main = React.createClass({
         console.log("RESULTS", response);
         console.log("Saved clicks", userNotes);
       }.bind(this));
+    }
   },
 
   deleteNote: function(id){

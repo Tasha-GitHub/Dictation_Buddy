@@ -17,8 +17,23 @@ var Main = React.createClass({
     return {
       title: "",
       body: " ",
-      recording: true
+      recording: true,
+      email: "a", 
+      password: "b",
+      loginStatus: false, 
+      userID: "587d81dc2fb8346ed139ce15"
     };
+  },
+
+  componentDidMount: function(){
+    var userID = localStorage.getItem("userID");
+    var loginStatus = localStorage.getItem("loginStatus");
+    console.log(userID);
+    console.log(loginStatus);
+    this.setState({
+      userID: userID,
+      loginStatus: loginStatus
+    });
   },
 
   speechRecorder: function(){
@@ -72,7 +87,10 @@ var Main = React.createClass({
     }
     var data = {
       title: this.state.title,
-      body: this.state.body}
+      body: this.state.body,
+      id: this.state.userID
+    }
+    console.log(data)
     helpers.createNote("/note/save", data)
     .then(alert("Note Saved"));
   },

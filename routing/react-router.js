@@ -25,6 +25,7 @@ var Builder = require("../app/components/builder");
 var Login = require("../app/components/login");
 var Signup = require("../app/components/signup");
 var LoginSignup = require("../app/components/LoginSignup");
+var Nav = require("../app/components/nav");
 
 // Export the Routes
 module.exports = (

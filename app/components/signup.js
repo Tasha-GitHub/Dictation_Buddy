@@ -1,31 +1,44 @@
 // Include React
 var React = require("react");
+var helpers = require("../utils/helpers");
 
 // Creating the Form component
 var Signup = React.createClass({
 
   // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
-    return { email: "", password: "", loginStatus: false };
+    return { email: "", password: "", loginStatus: false, userID: "" };
   },
 
   // This function will respond to the user input
-  handleChange: function(event) {
-
-    this.setState({ term: event.target.value });
+  handleEmail: function(event) {
+    this.setState({ email: event.target.value });
 
   },
 
-  // When a user submits...
-  handleSubmit: function(event) {
-    // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
-    // clicking the button
-    event.preventDefault();
+  handlePassword: function(event) {
+    this.setState({ password: event.target.value });
 
-    // Set the parent to have the search term
-    this.props.setTerm(this.state.term);
-    this.setState({ term: "" });
   },
+
+  saveUser: function(){
+    var self = this;
+    var data = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    helpers.createUser("/user/create", data)
+    .then(function(res){
+      console.log(res);
+      self.setState({ loginStatus: true, userID: res.data._id});
+      localStorage.clear();
+      // Store all content into localStorage
+      localStorage.setItem("loginStatus", self.state.loginStatus);
+      localStorage.setItem("userID", self.state.userID);
+      location.reload();
+    }); 
+  }, 
   // Here we describe this component's render method
   render: function() {
     return (
@@ -42,21 +55,21 @@ var Signup = React.createClass({
                 Also note how each has an onChange event associated with our handleChange event.
               */}
               <input
-                value={this.state.term}
+                value={this.state.email}
                 type="text"
                 className="form-control text-center"
                 id="term"
-                onChange={this.handleChange}
+                onChange={this.handleEmail}
                 required
                 placeholder = "Email"
               />
               <br />
               <input
-                value={this.state.term}
+                value={this.state.password}
                 type="text"
                 className="form-control text-center"
                 id="term"
-                onChange={this.handleChange}
+                onChange={this.handlePassword}
                 required
                 placeholder = "Password"
               />
@@ -64,7 +77,7 @@ var Signup = React.createClass({
           </form>
           <div className="buttons"> 
             <a href="#/login"><button className="btn btn-primary loginBtn">Log In</button></a>
-            <a href="#/submit"><button className="btn btn-primary submitBtn">Submit</button></a>           
+            <button onClick={this.saveUser} className="btn btn-primary submitBtn">Submit</button>          
           </div>
         </div>
     );

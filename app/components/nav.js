@@ -1,5 +1,6 @@
 // Include React
 var React = require("react");
+var LoginSignup = require("../components/loginSignup");
 
 
 // Create the Parent Component
@@ -27,9 +28,28 @@ var Nav = React.createClass({
             <ul className="nav navbar-nav">
               <li className="active"><a href="/notes">Saved Notes</a></li>
               <li className="active"><a href="/builder">Note Builder</a></li>
+              <li className="active"><a href="#" data-toggle="modal" data-target="#logSign">Login/Signup</a></li>
             </ul>
           </div>
         </div>
+
+        <div className="modal fade" id="logSign" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div className="modal-body">
+                  <div>
+                    <LoginSignup />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div> 
         </nav>
     );
   }

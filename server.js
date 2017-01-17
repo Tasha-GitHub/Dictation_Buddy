@@ -21,7 +21,7 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 // MongoDB configuration
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/week18Populater");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dictation");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
