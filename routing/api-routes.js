@@ -103,10 +103,40 @@ module.exports = function (app) {
         else {
           //console.log(doc);
           res.send(doc);
-          res.redirect("/");
+          // res.redirect("/");
 
         }
       });
+    });
+  });
+
+  app.post("/user/login", function (req, res) {
+    var email = req.body.email;
+    var password = req.body.password;
+    //console.log("/login: ", userLogin);
+    User.findOne({ email: email })
+      .exec(function(error, result) {
+        if (error){
+        } else {
+        var passwordConfirmation;
+        //captures userID in a variable
+        userId = result._id;
+        //captures useremail in a variable
+        var userName = result.email;
+        //grabs users password from db
+        var hash = result.password;
+        //compares db password and user entered password
+        bcrypt.compare(password, hash, function (err, result) {
+          // will return true or false depending if the passwords matched up
+          passwordConfirmation = result;
+          //sends a true and user id back to the front end
+          res.json({
+            confirm: passwordConfirmation,
+            _id: userId,
+            email: userName,
+          });
+        });
+      }
     });
   });
 

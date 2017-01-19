@@ -18,7 +18,8 @@ var Main = React.createClass({
       email: "",
       password: "", 
       loginStatus: false, 
-      userID: ""
+      userID: "",
+      componentLoaded: false
     };
   },
   //  On load display the number of clicks
@@ -43,21 +44,23 @@ var Main = React.createClass({
       body: this.state.body,
       id: this.state.userID
     }
-    console.log(this.state.loginStatus)
-    if(this.state.loginStatus = true ){
+
+    //console.log(this.state.loginStatus)
+    if(this.state.loginStatus = true){
     // The moment the page renders on page load, we will retrieve the previous click count.
     // We will then utilize that click count to change the value of the click state.
     helpers.getNote("/note/all", data)
       .then(function(response) {
-        console.log(response);
+        //console.log(response);
         // Using a ternary operator we can set newClicks to the number of clicks in our response object
         // If we don't have any clicks in our database, set newClicks to 0
         var userNotes = response.data[0].notes;
         this.setState({
-          notes: userNotes
+          notes: userNotes,
+          componentLoaded: true
         });
-        console.log("RESULTS", response);
-        console.log("Saved clicks", userNotes);
+        //console.log("RESULTS", response);
+        //console.log("Saved clicks", userNotes);
       }.bind(this));
     }
   },

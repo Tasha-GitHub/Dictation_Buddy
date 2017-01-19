@@ -17,5 +17,9 @@ module.exports = {
   }, 
   createUser: function(url, data){
     return axios.post(url, data)
+  },
+
+  logUser: function(url, data){
+    return axios.post(url, data)
   }
 };

@@ -12,23 +12,6 @@ var helpers = require("../utils/helpers");
 
 // Create the Parent Component
 var Main = React.createClass({
-
-  // Here we set a generic state associated with the number of clicks
-   getInitialState: function() {
-    return { email: "a", password: "b", loginStatus: false, userID: "587d81dc2fb8346ed139ce15" };
-  },
-
-  componentDidMount: function(){
-    var userID = localStorage.getItem("userID");
-    var loginStatus = localStorage.getItem("loginStatus");
-    console.log(userID);
-    console.log(loginStatus);
-    this.setState({
-      userID: userID,
-      loginStatus: loginStatus
-    });
-  },
-
   // Here we render the function
   render: function() {
     return (
