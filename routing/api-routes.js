@@ -48,8 +48,7 @@ module.exports = function (app) {
         }
       });
   });
-  //need to check if works
-  // New note creation via POST route
+
   app.post("/note/save", function(req, res) {
 
     // Use our Note model to make a new note from the req.body

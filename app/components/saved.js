@@ -29,8 +29,8 @@ var Main = React.createClass({
     // grabs user id from local storage and stores it as a state value
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");
-    console.log(userID);
-    console.log(loginStatus);
+    //console.log(userID);
+    //console.log(loginStatus);
     this.setState({
       userID: userID,
       loginStatus: loginStatus
@@ -38,31 +38,29 @@ var Main = React.createClass({
   },
 
   componentDidUpdate: function(){
+    var self = this;
     console.log("COMPONENT Updated");
     var data = {
-      title: this.state.title,
-      body: this.state.body,
       id: this.state.userID
     }
 
     //console.log(this.state.loginStatus)
     if(this.state.loginStatus = true){
-    // The moment the page renders on page load, we will retrieve the previous click count.
-    // We will then utilize that click count to change the value of the click state.
-    helpers.getNote("/note/all", data)
-      .then(function(response) {
-        //console.log(response);
-        // Using a ternary operator we can set newClicks to the number of clicks in our response object
-        // If we don't have any clicks in our database, set newClicks to 0
-        var userNotes = response.data[0].notes;
-        this.setState({
-          notes: userNotes,
-          componentLoaded: true
-        });
-        //console.log("RESULTS", response);
-        //console.log("Saved clicks", userNotes);
-      }.bind(this));
+      if(self.state.componentLoaded == false){
+        //console.log("componend loaded is false")
+        helpers.getNote("/note/all", data)
+        .then(function(response) {
+          //console.log(response);
+          var userNotes = response.data[0].notes;
+          this.setState({
+            notes: userNotes,
+            componentLoaded: true
+          });
+        }.bind(this));
+      }
+
     }
+
   },
 
   deleteNote: function(id){
@@ -124,11 +122,6 @@ var Main = React.createClass({
       );
     });
   },
-
-  renderModels: function(){
-
-  },
-
   // Here we render the function
   render: function() {
     return (
