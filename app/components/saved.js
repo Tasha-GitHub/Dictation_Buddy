@@ -25,7 +25,7 @@ var Main = React.createClass({
   //  On load display the number of clicks
   componentDidMount: function() {
     console.log("COMPONENT MOUNTED");
-    //localStorage.clear();
+    localStorage.clear();
     // grabs user id from local storage and stores it as a state value
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");

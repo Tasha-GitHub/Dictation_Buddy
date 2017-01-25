@@ -107,9 +107,11 @@ nav a {
 
 }
 
+/*other styling */
 .modal-body{
 	min-height: 500px;
 }
+/*header fade in styling*/
 h1 {color: #FFFFFF;
 	text-align: center;
 	font-size: 800% !important;
@@ -238,11 +240,12 @@ h1 {color: #FFFFFF;
 	margin-right: 20px;
 	margin-left: 20px;
 }
-/*saved notes*/
+
+/*saved notes styling */
 .notesDiv{
-	display: flex;
+/*	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: center;*/
 
 }
 
@@ -258,6 +261,7 @@ h1 {color: #FFFFFF;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000000;
+	max-width: 250px;
 	background-color: #FFFFFF;
 	margin: 30px 40px 30px 30px;
 	box-shadow: 10px 10px 5px #888888;
@@ -298,5 +302,44 @@ h1 {color: #FFFFFF;
 	margin: 10px 10px 10px 10px;
 }
 
+/*note builder fade in of div styling */
+@-webkit-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1; 
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;  
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+.fade-in.noteBuilder {
+-webkit-animation-delay: 0.5s;
+-moz-animation-delay: 0.5s;
+animation-delay: 0.5s;
+}
+
+.fade-in.controls {
+-webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
+}
+
+/*printing comands*/
+
+@media print
+{
+    .no-print { display: none; }
+    .print { display: block; }
+}
 
 

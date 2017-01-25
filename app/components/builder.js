@@ -125,7 +125,7 @@ var Main = React.createClass({
             <h1>Note Builder</h1>
           </div>
           <div className="row">
-            <section className="col-md-7 noteBuilder">
+            <section className="col-md-7 noteBuilder fade-in">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <h4 className="">
@@ -145,7 +145,7 @@ var Main = React.createClass({
             </section>
             <section className="col-md-1">
             </section>
-            <section className="col-md-4 controls">
+            <section className="col-md-4 controls fade-in">
               <h4> Note Editor</h4>
               <article>
                 <h2> Start/Stop</h2>
