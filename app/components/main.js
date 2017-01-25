@@ -46,10 +46,7 @@ var Main = React.createClass({
             <div className="col-md-4" >
              {this.props.children}
             </div>
-          </div>
-          <div className="gap gap-bottom">
-            
-          </div>          
+          </div>         
         </div>
         <Footer />
       </div>

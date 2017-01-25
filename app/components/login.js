@@ -36,7 +36,7 @@ var Login = React.createClass({
       // Store all content into localStorage
       localStorage.setItem("loginStatus", self.state.loginStatus);
       localStorage.setItem("userID", self.state.userID);
-      //location.reload();
+      location.reload();
     }); 
   }, 
   // Here we describe this component's render method

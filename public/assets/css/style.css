@@ -57,6 +57,7 @@ body {
 .content {
   flex: 1;
   background-color: #A1A8B2;
+  padding: 0px 0px 20px 0px;
 }
 
 /*bootstrap overrides */
@@ -86,12 +87,13 @@ body {
 /*footer styling*/
 footer{
 	text-align: center;
-	background-color: #44474C;
-	min-height: 40px;
+	background-color: #222222;
+	min-height: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 10px 0px 0px 0px;
+	color: #FFFFFF;
 }
 
 /*nav styling*/
@@ -111,6 +113,31 @@ nav a {
 .modal-body{
 	min-height: 500px;
 }
+
+/*text styling*/
+p {
+	font-family: 'Fanwood Text', serif;
+}
+
+a {
+	font-family: 'Fanwood Text', serif;
+}
+
+button {
+	font-family: 'Fanwood Text', serif;
+}
+
+h2 {
+	font-family: 'Fanwood Text', serif;
+}
+
+h4 {
+	font-family: 'Fanwood Text', serif;
+}
+
+input {
+	font-family: 'Fanwood Text', serif;
+}
 /*header fade in styling*/
 h1 {color: #FFFFFF;
 	text-align: center;
@@ -119,6 +146,7 @@ h1 {color: #FFFFFF;
     margin-top: 20px;
     font-size: 21px;
     text-align: center;
+    font-family: 'Vollkorn', serif;
 
     /*outline*/
     color: black;
@@ -243,9 +271,9 @@ h1 {color: #FFFFFF;
 
 /*saved notes styling */
 .notesDiv{
-/*	display: flex;
+	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;*/
+	justify-content: center;
 
 }
 
@@ -327,15 +355,15 @@ h1 {color: #FFFFFF;
 }
 
 .fade-in.noteBuilder {
--webkit-animation-delay: 0.5s;
--moz-animation-delay: 0.5s;
-animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
 }
 
 .fade-in.controls {
--webkit-animation-delay: 1.2s;
--moz-animation-delay:1.2s;
-animation-delay: 1.2s;
+	-webkit-animation-delay: 1.2s;
+	-moz-animation-delay:1.2s;
+	animation-delay: 1.2s;
 }
 
 /*printing comands*/

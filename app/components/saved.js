@@ -1,10 +1,12 @@
 // Include React
 var React = require("react");
+
 // Here we include all of the sub-components
 var Signup = require("../components/signup");
 var Login = require("../components/login");
 var Nav = require("../components/nav");
 var Footer = require("../components/footer");
+
 // Requiring our helper for making API calls
 var helpers = require("../utils/helpers");
 //localStorage.clear();
@@ -15,7 +17,11 @@ var Main = React.createClass({
   // Here we set a generic state
   getInitialState: function() {
     return {
-      notes: [],
+      notes: [{
+        _id: 2,
+        title: "Welcome",
+        body: "This is where your notes will be stored, start building notes in the note builder"
+        }],
       email: "",
       password: "", 
       loginStatus: false, 
@@ -28,7 +34,6 @@ var Main = React.createClass({
     console.log("COMPONENT MOUNTED");
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");
-    console.log(loginStatus);
     // grabs user id from local storage and stores it as a state value
     if (loginStatus == null) {
       console.log("bye")
@@ -41,34 +46,35 @@ var Main = React.createClass({
         loginStatus: true
       });      
     }
-
   },
 
   componentDidUpdate: function(){
+    //saves this for helper function
     var self = this;
     console.log("COMPONENT Updated");
+    //grabs users ID from state
     var data = {
       id: this.state.userID
     }
-
-    //console.log(this.state.loginStatus)
+    //checks to see if a user is logged in and sends a response accoridnly
     if(this.state.loginStatus === true){
-      console.log("hey")
       if(self.state.componentLoaded == false){
-        //console.log("componend loaded is false")
         helpers.getNote("/note/all", data)
         .then(function(response) {
-          //console.log(response);
           var userNotes = response.data[0].notes;
-          this.setState({
-            notes: userNotes,
-            componentLoaded: true
-          });
+          //if user has no notes, return and use default note
+          if(userNotes.length === 0 ){
+            return
+          }else{
+            this.setState({
+              notes: userNotes,
+              componentLoaded: true
+            });            
+          }
         }.bind(this));
       }
     } else {
-
-      console.log("low")
+      //if the user is not logged in, it will show a helper card that tells them to login
       if(self.state.componentLoaded == false){
         this.setState({
           notes: [{
@@ -83,15 +89,17 @@ var Main = React.createClass({
   },
 
   deleteNote: function(id){
+    //deletes a user note by sending the corresponding note id to a delete path
     var noteId = id;
     console.log(noteId);
     helpers.deleteNote("/note/delete/"+ noteId)
-      .then(function(response) {
-        location.reload();
+    .then(function(response) {
+      location.reload();
     });
   },
 
   printNote: function(){
+    //print notes
     window.print();
   },
 
