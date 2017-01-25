@@ -280,15 +280,19 @@ h1 {color: #FFFFFF;
 
 
 /*note builder styling */
+.components{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0px 0px 0px 0px;
+}
 
 .controls, .noteBuilder{
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000000;
-	margin-left: 30px;
 	background-color: #FFFFFF;
 	min-height: 400px;
-	margin-bottom: 30px;
 	box-shadow: 10px 10px 5px #888888;
 	overflow-y: scroll;
 

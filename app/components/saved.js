@@ -7,11 +7,12 @@ var Nav = require("../components/nav");
 var Footer = require("../components/footer");
 // Requiring our helper for making API calls
 var helpers = require("../utils/helpers");
+//localStorage.clear();
 
 // Create the Parent Component
 var Main = React.createClass({
 
-  // Here we set a generic state associated with the number of clicks
+  // Here we set a generic state
   getInitialState: function() {
     return {
       notes: [],
@@ -22,19 +23,25 @@ var Main = React.createClass({
       componentLoaded: false
     };
   },
-  //  On load display the number of clicks
+  //  On load display users notes
   componentDidMount: function() {
     console.log("COMPONENT MOUNTED");
-    localStorage.clear();
-    // grabs user id from local storage and stores it as a state value
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");
-    //console.log(userID);
-    //console.log(loginStatus);
-    this.setState({
-      userID: userID,
-      loginStatus: loginStatus
-    });
+    console.log(loginStatus);
+    // grabs user id from local storage and stores it as a state value
+    if (loginStatus == null) {
+      console.log("bye")
+      this.setState({
+        loginStatus: false
+      });
+    } else {
+      this.setState({
+        userID: userID,
+        loginStatus: true
+      });      
+    }
+
   },
 
   componentDidUpdate: function(){
@@ -45,7 +52,8 @@ var Main = React.createClass({
     }
 
     //console.log(this.state.loginStatus)
-    if(this.state.loginStatus = true){
+    if(this.state.loginStatus === true){
+      console.log("hey")
       if(self.state.componentLoaded == false){
         //console.log("componend loaded is false")
         helpers.getNote("/note/all", data)
@@ -58,9 +66,20 @@ var Main = React.createClass({
           });
         }.bind(this));
       }
+    } else {
 
+      console.log("low")
+      if(self.state.componentLoaded == false){
+        this.setState({
+          notes: [{
+            _id: 1,
+            title: "Plese Log in to Start Saving Notes!",
+            body: "Thank You"
+          }],
+          componentLoaded: true
+        });
+      }      
     }
-
   },
 
   deleteNote: function(id){
