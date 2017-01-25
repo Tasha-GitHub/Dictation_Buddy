@@ -27,17 +27,20 @@ var Signup = React.createClass({
       email: this.state.email,
       password: this.state.password
     }
-
-    helpers.createUser("/user/create", data)
-    .then(function(res){
-      console.log(res);
-      self.setState({ loginStatus: true, userID: res.data._id});
-      localStorage.clear();
-      // Store all content into localStorage
-      localStorage.setItem("loginStatus", self.state.loginStatus);
-      localStorage.setItem("userID", self.state.userID);
-      location.reload();
-    }); 
+    //stops the user from submitting blank fields
+    if(data.email.length === 0 || data.password.length === 0){
+      alert("missing required fields")
+    } else {
+      helpers.createUser("/user/create", data)
+      .then(function(res){
+        self.setState({ loginStatus: true, userID: res.data._id});
+        localStorage.clear();
+        // Store all content into localStorage
+        localStorage.setItem("loginStatus", self.state.loginStatus);
+        localStorage.setItem("userID", self.state.userID);
+        location.reload();
+      }); 
+    }
   }, 
   // Here we describe this component's render method
   render: function() {

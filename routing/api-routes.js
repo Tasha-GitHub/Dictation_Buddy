@@ -1,6 +1,7 @@
 var Note = require("../models/note.js");
 var User = require("../models/user.js");
 var bcrypt = require('bcrypt-nodejs');
+var sanitize = require('mongo-sanitize');
 var salt = bcrypt.genSaltSync(10);
 var userId;
 
@@ -48,13 +49,13 @@ module.exports = function (app) {
         }
       });
   });
-  //need to check if works
-  // New note creation via POST route
-  app.post("/note/save", function(req, res) {
 
+  app.post("/note/save", function(req, res) {
+    var cleanTitle = sanitize(req.body.title);
+    console.log(cleanTitle);
     // Use our Note model to make a new note from the req.body
     var newNote = new Note({ 
-      title: req.body.title,
+      title: cleanTitle,
       body: req.body.body,
       id: req.body.userID
     });
@@ -84,10 +85,12 @@ module.exports = function (app) {
 
     // New user creation via POST route
   app.post("/user/create", function(req, res) {
-    console.log(req.body);
-    var password = req.body.password;
-    var email = req.body.email;
-    console.log(password)
+    //console.log(req.body);
+    var cleanEmail = sanitize(req.body.email);
+    var cleanPassword = sanitize(req.body.password);
+    var password = cleanPassword;
+    var email = cleanEmail;
+    //console.log(password)
     bcrypt.hash(password, null, null, function (err, hash) {
       var exampleUser = new User({
         email: email,
@@ -111,8 +114,10 @@ module.exports = function (app) {
   });
 
   app.post("/user/login", function (req, res) {
-    var email = req.body.email;
-    var password = req.body.password;
+    var cleanEmail = sanitize(req.body.email);
+    var cleanPassword = sanitize(req.body.password);
+    var email = cleanEmail;
+    var password = cleanPassword;
     //console.log("/login: ", userLogin);
     User.findOne({ email: email })
       .exec(function(error, result) {

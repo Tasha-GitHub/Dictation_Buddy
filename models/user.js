@@ -6,10 +6,12 @@ var Schema = mongoose.Schema;
 // Create a Schema for capturing clicks. We'll use clickID to update the same clickCounter
 var UserSchema = new Schema({
   email: {
-    type: String
+    type: String,
+    required: true
   },
   password: {
-    type: String
+    type: String,
+    required: true
   },
   // notes property for the user
   notes: [{

@@ -8,6 +8,7 @@ var Nav = require("../components/nav");
 var Footer = require("../components/footer");
 // Requiring our helper for making API calls
 var helpers = require("../utils/helpers");
+//localStorage.clear();
 
 // Create the Parent Component
 var Main = React.createClass({
@@ -18,22 +19,29 @@ var Main = React.createClass({
       title: "",
       body: " ",
       recording: true,
-      email: "a", 
-      password: "b",
+      email: "", 
+      password: "",
       loginStatus: false, 
-      userID: "587d81dc2fb8346ed139ce15"
+      userID: ""
     };
   },
 
   componentDidMount: function(){
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");
-    console.log(userID);
     console.log(loginStatus);
-    this.setState({
-      userID: userID,
-      loginStatus: loginStatus
-    });
+    // grabs user id from local storage and stores it as a state value
+    if (loginStatus == null) {
+      console.log("bye")
+      this.setState({
+        loginStatus: false
+      });
+    } else {
+      this.setState({
+        userID: userID,
+        loginStatus: true
+      });      
+    }
   },
 
   speechRecorder: function(){
@@ -70,19 +78,15 @@ var Main = React.createClass({
     recognition.start();
   },
 
-  componentDidUpdate: function(prevProps, prevState) {
-    // var self = this;
-    // // If we have a new search term, run a new search
-    // if (prevState.body !== this.state.body) {
-       console.log("UPDATED");
-    //   self.speechRecorder();
-    //   };
-  },
-
   saveRecording: function(prevProps, prevState){
+    var loginStatus = localStorage.getItem("loginStatus");
     if(this.state.title === ""){
       console.log("title required");
       alert("Title is a required field");
+      return
+    }
+    if(loginStatus == null){
+      alert("Please Sign in to Save a Note");
       return
     }
     var data = {
@@ -124,8 +128,8 @@ var Main = React.createClass({
           <div className="row">
             <h1>Note Builder</h1>
           </div>
-          <div className="row">
-            <section className="col-md-7 noteBuilder">
+          <div className="row components">
+            <section className="col-md-7 noteBuilder fade-in">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <h4 className="">
@@ -143,9 +147,7 @@ var Main = React.createClass({
                 </div>
               </form>
             </section>
-            <section className="col-md-1">
-            </section>
-            <section className="col-md-4 controls">
+            <section className="col-md-5 controls fade-in">
               <h4> Note Editor</h4>
               <article>
                 <h2> Start/Stop</h2>

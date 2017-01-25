@@ -5,12 +5,6 @@ var LoginSignup = require("../components/loginSignup");
 
 // Create the Parent Component
 var Nav = React.createClass({
-
-  hamburgerToggle: function(){
-    var self = this;
-    self.classList.toggle('active');
-  },
-
   // Here we render the function
   render: function() {
     return (
@@ -24,32 +18,13 @@ var Nav = React.createClass({
               </button>
               <a className="navbar-brand" href="/">Dictation Buddy</a>
             </div>
-          <div className="navbar-collapse collapse">
-            <ul className="nav navbar-nav">
-              <li className="active"><a href="/notes">Saved Notes</a></li>
-              <li className="active"><a href="/builder">Note Builder</a></li>
-              <li className="active"><a href="#" data-toggle="modal" data-target="#logSign">Login/Signup</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="modal fade" id="logSign" role="dialog">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div className="modal-body">
-                  <div>
-                    <LoginSignup />
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
+            <div className="navbar-collapse collapse">
+              <ul className="nav navbar-nav">
+                <li className="active"><a href="/notes">Saved Notes</a></li>
+                <li className="active"><a href="/builder">Note Builder</a></li>
+              </ul>
             </div>
-        </div> 
+          </div>
         </nav>
     );
   }

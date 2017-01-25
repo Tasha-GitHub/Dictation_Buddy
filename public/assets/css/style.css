@@ -57,6 +57,7 @@ body {
 .content {
   flex: 1;
   background-color: #A1A8B2;
+  padding: 0px 0px 20px 0px;
 }
 
 /*bootstrap overrides */
@@ -86,12 +87,13 @@ body {
 /*footer styling*/
 footer{
 	text-align: center;
-	background-color: #44474C;
-	min-height: 40px;
+	background-color: #222222;
+	min-height: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 10px 0px 0px 0px;
+	color: #FFFFFF;
 }
 
 /*nav styling*/
@@ -107,9 +109,36 @@ nav a {
 
 }
 
+/*other styling */
 .modal-body{
 	min-height: 500px;
 }
+
+/*text styling*/
+p {
+	font-family: 'Fanwood Text', serif;
+}
+
+a {
+	font-family: 'Fanwood Text', serif;
+}
+
+button {
+	font-family: 'Fanwood Text', serif;
+}
+
+h2 {
+	font-family: 'Fanwood Text', serif;
+}
+
+h4 {
+	font-family: 'Fanwood Text', serif;
+}
+
+input {
+	font-family: 'Fanwood Text', serif;
+}
+/*header fade in styling*/
 h1 {color: #FFFFFF;
 	text-align: center;
 	font-size: 800% !important;
@@ -117,6 +146,7 @@ h1 {color: #FFFFFF;
     margin-top: 20px;
     font-size: 21px;
     text-align: center;
+    font-family: 'Vollkorn', serif;
 
     /*outline*/
     color: black;
@@ -238,7 +268,8 @@ h1 {color: #FFFFFF;
 	margin-right: 20px;
 	margin-left: 20px;
 }
-/*saved notes*/
+
+/*saved notes styling */
 .notesDiv{
 	display: flex;
 	flex-wrap: wrap;
@@ -258,6 +289,7 @@ h1 {color: #FFFFFF;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000000;
+	max-width: 250px;
 	background-color: #FFFFFF;
 	margin: 30px 40px 30px 30px;
 	box-shadow: 10px 10px 5px #888888;
@@ -274,43 +306,21 @@ h1 {color: #FFFFFF;
 
 }
 
-/* Effect 6: flip (based on http://lab.hakim.se/scroll-effects/ by @hakimel) */
-.notesDiv {
-	-webkit-perspective: 1300px;
-	perspective: 1300px;
-}
-
-.notesDiv  .savedNote.animate {
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-	-webkit-transform-origin: 0% 0%;
-	transform-origin: 0% 0%;
-	-webkit-transform: rotateX(-80deg);
-	transform: rotateX(-80deg);
-	-webkit-animation: flip .8s ease-in-out forwards;
-	animation: flip .8s ease-in-out forwards;
-}
-
-@-webkit-keyframes flip {
-	0% { }
-	100% { -webkit-transform: rotateX(0deg); opacity: 1; }
-}
-
-@keyframes flip {
-	0% { }
-	100% { -webkit-transform: rotateX(0deg); transform: rotateX(0deg); opacity: 1; }
-}
 
 /*note builder styling */
+.components{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0px 0px 0px 0px;
+}
 
 .controls, .noteBuilder{
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000000;
-	margin-left: 30px;
 	background-color: #FFFFFF;
 	min-height: 400px;
-	margin-bottom: 30px;
 	box-shadow: 10px 10px 5px #888888;
 	overflow-y: scroll;
 
@@ -324,5 +334,44 @@ h1 {color: #FFFFFF;
 	margin: 10px 10px 10px 10px;
 }
 
+/*note builder fade in of div styling */
+@-webkit-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1; 
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;  
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+.fade-in.noteBuilder {
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+
+.fade-in.controls {
+	-webkit-animation-delay: 1.2s;
+	-moz-animation-delay:1.2s;
+	animation-delay: 1.2s;
+}
+
+/*printing comands*/
+
+@media print
+{
+    .no-print { display: none; }
+    .print { display: block; }
+}
 
 
