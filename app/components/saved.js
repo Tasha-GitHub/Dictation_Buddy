@@ -99,9 +99,20 @@ var Main = React.createClass({
     });
   },
 
-  printNote: function(){
+  printNote: function(id, title, body){
     //print notes
-    window.print();
+    var divToPrint=document.getElementById(id);
+
+    var newWin=window.open('','Print-Window');
+
+    newWin.document.open();
+
+    newWin.document.write('<html><body onload="window.print()">'+ "<h1>" + title + "</h1>" + "<h3>" + body + "</h3>"+'</body></html>');
+
+    newWin.document.close();
+
+    setTimeout(function(){newWin.close();},10);
+
   },
 
   renderNotes: function(){
@@ -135,7 +146,7 @@ var Main = React.createClass({
                           <p>{search.body}</p>
                         </div>
                         <div className="col-md-2 col-sm-2 col-xs-2">
-                          <button type="button" className="btn btn-info" id="print" onClick={self.printNote} data-id={search._id}> Print Note</button>
+                          <button type="button" className="btn btn-info print" id="search._id" onClick={self.printNote.bind(null, search._id, search.title, search.body)} data-id={search._id}> Print Note</button>
                         </div>                     
                       </div>
                   </div>

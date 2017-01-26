@@ -120,40 +120,41 @@ module.exports = function (app) {
     var password = cleanPassword;
     //console.log("/login: ", userLogin);
     User.findOne({ email: email })
-      .exec(function(error, result) {
-        if (error){
-          console.log(error);
-        } else {
-          console.log(result)
-          if(result == null) {
-            res.json({
-                confirm: false,
-                _id: false,
-                email: false,
-              });
-          } else {
-            var passwordConfirmation;
-            //captures userID in a variable
-            userId = result._id;
-            //captures useremail in a variable
-            var userName = result.email;
-            //grabs users password from db
-            var hash = result.password;
-            //compares db password and user entered password
-            bcrypt.compare(password, hash, function (err, result) {
-              // will return true or false depending if the passwords matched up
-              passwordConfirmation = result;
-              //sends a true and user id back to the front end
-              res.json({
-                confirm: passwordConfirmation,
-                _id: userId,
-                email: userName,
-              });
+    .exec(function(error, result) {
+      if (error){
+        console.log(error);
+      } else {
+        console.log(result);
+        //if there were no  matching results in the DB, it will send back false instead
+        //throwing errors
+        if(result == null) {
+          res.json({
+              confirm: false,
+              _id: false,
+              email: false,
             });
-          }
-
+        } else {
+          //this will send back data to the user after it is decrypted
+          var passwordConfirmation;
+          //captures userID in a variable
+          userId = result._id;
+          //captures useremail in a variable
+          var userName = result.email;
+          //grabs users password from db
+          var hash = result.password;
+          //compares db password and user entered password
+          bcrypt.compare(password, hash, function (err, result) {
+            // will return true or false depending if the passwords matched up
+            passwordConfirmation = result;
+            //sends a true and user id back to the front end
+            res.json({
+              confirm: passwordConfirmation,
+              _id: userId,
+              email: userName,
+            });
+          });
+        }
       }
     });
   });
-
 };
