@@ -1,5 +1,6 @@
 // Include the Mongoose Dependencies
 var mongoose = require("mongoose");
+var validators = require('mongoose-validators');
 
 var Schema = mongoose.Schema;
 

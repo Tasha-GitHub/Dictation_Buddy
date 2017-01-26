@@ -1,5 +1,6 @@
 // Include the Mongoose Dependencies
 var mongoose = require("mongoose");
+var validators = require('mongoose-validators');
 
 var Schema = mongoose.Schema;
 
@@ -7,7 +8,8 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   email: {
     type: String,
-    required: true
+    required: true,
+    validate: validators.isEmail()
   },
   password: {
     type: String,

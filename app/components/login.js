@@ -30,12 +30,24 @@ var Login = React.createClass({
 
     helpers.logUser("/user/login", data)
     .then(function(res){
-      console.log(res);
-      self.setState({ loginStatus: true, userID: res.data._id});
-      localStorage.clear();
-      // Store all content into localStorage
-      localStorage.setItem("loginStatus", self.state.loginStatus);
-      localStorage.setItem("userID", self.state.userID);
+      console.log(res.data.confirm)
+      if(res.data.confirm === false){
+        self.setState({ loginStatus: false, userID: false});
+        localStorage.clear();
+        // Store all content into localStorage
+        localStorage.setItem("loginStatus", self.state.loginStatus);
+        localStorage.setItem("userID", self.state.userID);
+        localStorage.setItem("email", false);
+      }else {
+        console.log(res);
+        self.setState({ loginStatus: true, userID: res.data._id});
+        localStorage.clear();
+        // Store all content into localStorage
+        localStorage.setItem("loginStatus", self.state.loginStatus);
+        localStorage.setItem("userID", self.state.userID);
+        localStorage.setItem("email", self.state.email);        
+      }
+
       location.reload();
     }); 
   }, 

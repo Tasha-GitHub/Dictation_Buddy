@@ -35,8 +35,9 @@ var Main = React.createClass({
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");
     // grabs user id from local storage and stores it as a state value
-    if (loginStatus == null) {
-      console.log("bye")
+    //if user is not logged in or has failed to login the state will be false or null, this will
+    //capture both instances
+    if (loginStatus == null || loginStatus === "false") {
       this.setState({
         loginStatus: false
       });
@@ -56,7 +57,7 @@ var Main = React.createClass({
     var data = {
       id: this.state.userID
     }
-    //checks to see if a user is logged in and sends a response accoridnly
+    //checks to see if a user is logged in and sends a response accordingly
     if(this.state.loginStatus === true){
       if(self.state.componentLoaded == false){
         helpers.getNote("/note/all", data)

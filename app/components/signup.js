@@ -33,11 +33,13 @@ var Signup = React.createClass({
     } else {
       helpers.createUser("/user/create", data)
       .then(function(res){
+        console.log(res)
         self.setState({ loginStatus: true, userID: res.data._id});
         localStorage.clear();
         // Store all content into localStorage
         localStorage.setItem("loginStatus", self.state.loginStatus);
         localStorage.setItem("userID", self.state.userID);
+        localStorage.setItem("email", self.state.email);
         location.reload();
       }); 
     }
