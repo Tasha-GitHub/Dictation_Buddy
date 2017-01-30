@@ -119,7 +119,7 @@ var Main = React.createClass({
     var self = this;
     return this.state.notes.map(function(search, i) {
       return (
-        <article key={i} className="savedNote">
+        <article key={i} className="savedNote col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <div className="noteHighlight">
             <p>{search.title}</p>
             <hr/>
@@ -141,7 +141,7 @@ var Main = React.createClass({
                 <div className="modal-body">
                   <div>
                       <div className="row">
-                        <div className="col-md-10 col-sm-110 col-xs-10">
+                        <div className="col-md-10 col-sm-10 col-xs-10">
                           <p>{search.title}</p>
                           <p>{search.body}</p>
                         </div>
@@ -168,13 +168,14 @@ var Main = React.createClass({
         <div className="content">
           <Nav />
           <div className="row">
-            <h1>My Notes</h1>
+            <div className="col-md-12 col-sm-12 col-xs-12">
+              <h1>My Notes</h1>
+            </div>
+            
           </div>
-          <div className="row">
-            <section  className="notesDiv">
-              {this.renderNotes()}
-            </section>
-          </div>          
+          <section  className="notesDiv row">
+            {this.renderNotes()}
+          </section>        
         </div>
         <Footer />
       </div>

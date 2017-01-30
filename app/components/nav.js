@@ -8,7 +8,7 @@ var Nav = React.createClass({
   // Here we render the function
   render: function() {
     return (
-        <nav className="bg-info navbar">
+        <nav className="bg-info navbar row">
           <div className="navbar navbar-inverse navbar-fixed-top">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle" onClick={this.hamburgerToggle} data-toggle="collapse" data-target=".navbar-collapse">

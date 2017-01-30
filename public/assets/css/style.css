@@ -34,14 +34,17 @@ html {
 
 body {
   height: 100%;
+  width: 100%
 }
 
 #app {
   min-height: 100%;
+  width: 100%;
 }
 
 #appSaved {
-  min-height: 100% !important;
+  min-height: 100%;
+  width: 100%;
 }
 
 .container{
@@ -57,12 +60,11 @@ body {
 .content {
   flex: 1;
   background-color: #A1A8B2;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 100%
 }
 
 /*bootstrap overrides */
-
-
 .bg-info{
 	padding: 0px;
 	margin: 0px;
@@ -72,7 +74,6 @@ body {
 	padding: 0px;
 	margin: 0px;
 }
-
 
 /*banner styling*/
 .banner{
@@ -115,31 +116,13 @@ nav a {
 }
 
 /*text styling*/
-p {
+p, a, button, h2, h3, h4, input {
 	font-family: 'Fanwood Text', serif;
 }
 
-a {
-	font-family: 'Fanwood Text', serif;
-}
-
-button {
-	font-family: 'Fanwood Text', serif;
-}
-
-h2 {
-	font-family: 'Fanwood Text', serif;
-}
-
-h4 {
-	font-family: 'Fanwood Text', serif;
-}
-
-input {
-	font-family: 'Fanwood Text', serif;
-}
 /*header fade in styling*/
-h1 {color: #FFFFFF;
+h1 {
+	color: #FFFFFF;
 	text-align: center;
 	font-size: 800% !important;
 	text-shadow: 2px 2px #000000;
@@ -201,6 +184,7 @@ h1 {color: #FFFFFF;
 	border-style: solid;
 	border-color: #000000;
 	width: 300px;
+	height: 250px;
 	margin-top: 30px;
 	margin-left: 40px;
 	padding-top: 30px;
@@ -209,11 +193,24 @@ h1 {color: #FFFFFF;
 
 }
 
+.loginPortal{
+	display: flex;
+	justify-content: center;
+	margin: 0px 0px 40px 0px;
+	background-image: url("../images/banner.jpg");
+	background-size: cover;
+	height: 500px;
+}
+
 .gap{
 	background-color: #000000;
-	max-height: 50px;
-	min-height: 50px;
+	max-height: 20px;
+	min-height: 20px;
 
+}
+
+.aboutUs{
+	height: 500px;
 }
 
 .gap-top{
@@ -241,7 +238,6 @@ h1 {color: #FFFFFF;
 	margin-top: 10px;
 	margin-bottom: 30px;
 	margin-left: 40px;
-
 }
 
 .feature{
@@ -303,31 +299,52 @@ h1 {color: #FFFFFF;
 	min-height: 250px;
 	max-height: 250px;
 	padding: 10px 10px 10px 10px;
-
 }
 
 
 /*note builder styling */
 .components{
 	display: flex;
-	justify-content: space-around;
 	align-items: center;
-	margin: 0px 0px 0px 0px;
 }
 
 .controls, .noteBuilder{
+	background-color: #FFFFFF;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000000;
-	background-color: #FFFFFF;
-	min-height: 400px;
-	box-shadow: 10px 10px 5px #888888;
-	overflow-y: scroll;
-
 }
 
-.controls h4, .noteBuilder h4{
-	text-align: center;
+.noteBuilder{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	min-height: 500px;
+	box-shadow: 10px 10px 5px #888888;
+	overflow-y: scroll;
+	margin: 0px 50px 0px 50px;
+}
+
+.controls h4 h2 h3, .noteBuilder h4{
+	text-align: center !important;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.controls h2 {
+	border-width: 1px;
+	border-style: none none solid none;
+	border-color: #000000;
+	padding: 0px 0px 0px 0px;
+}
+
+.controls{
+	min-height: 85vh;
+	margin: 0px 0px 0px 0px;
 }
 
 #start ,#stop, #save, #reset{
@@ -374,4 +391,87 @@ h1 {color: #FFFFFF;
     .print { display: block; }
 }
 
+/*=====================================================
+                    Media Queries            
+=====================================================*/
 
+@media only screen and (max-width : 768px) {
+	h1{
+	 	font-size: 600% !important;
+
+	}
+	.components{
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.controls{
+		order:1;
+	}
+
+	.noteBuilder{
+		order:2;
+	}
+}
+@media only screen and (min-width:400px) and (max-width : 480px) {
+	h1{
+ 		font-size: 600% !important;
+ 	}
+ 	.components{
+ 		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.controls{
+		order:1;
+	}
+
+	.noteBuilder{
+		order:2;
+	}
+
+}
+
+@media only screen and (max-width : 375px) {
+ 	h1{
+ 		font-size: 500% !important;
+ 	}
+ 	.components{
+ 		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.controls{
+		order:1;
+	}
+
+	.noteBuilder{
+		order:2;
+	}
+
+}
+
+
+@media only screen and (max-width : 320px) {
+	h1{
+	 	font-size: 500% !important;
+	}
+	.components{
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.controls{
+		order:1;
+	}
+
+	.noteBuilder{
+		order:2;
+	}
+
+
+}

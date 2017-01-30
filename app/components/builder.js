@@ -32,7 +32,7 @@ var Main = React.createClass({
     console.log(loginStatus);
     // grabs user id from local storage and stores it as a state value
     if (loginStatus == null) {
-      console.log("bye")
+      //console.log("bye")
       this.setState({
         loginStatus: false
       });
@@ -125,11 +125,8 @@ var Main = React.createClass({
       <div className="container">
         <div className="content">
           <Nav />
-          <div className="row">
-            <h1>Note Builder</h1>
-          </div>
           <div className="row components">
-            <section className="col-md-7 noteBuilder fade-in">
+            <section className="col-lg-9 col-md-9 col-sm-12 col-xs-12 noteBuilder fade-in">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <h4 className="">
@@ -147,15 +144,14 @@ var Main = React.createClass({
                 </div>
               </form>
             </section>
-            <section className="col-md-5 controls fade-in">
-              <h4> Note Editor</h4>
+            <section className="col-lg-3 col-md-4 col-sm-12 col-xs-12 controls fade-in">
+              <h2> Editor Tools</h2>
               <article>
-                <h2> Start/Stop</h2>
-                <button className="btn btn-danger" id="start" onClick={this.speechRecorder}> Start</button>
-                <button className="btn btn-danger" id="stop" onClick={this.stopRecording}> Stop</button>                
+                <h3>Start Recording</h3>
+                <button className="btn btn-danger" id="start" onClick={this.speechRecorder}> Start</button>               
               </article> 
               <article>
-                <h2> Note Builder Portion</h2>
+                <h3>Save/Reset</h3>
                 <button className="btn btn-danger" id="save" onClick={this.saveRecording}> Save</button>
                 <button className="btn btn-danger" id="reset" onClick={this.resetRecording}> Reset</button>                
               </article>                           

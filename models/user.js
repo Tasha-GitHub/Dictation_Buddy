@@ -1,6 +1,7 @@
 // Include the Mongoose Dependencies
 var mongoose = require("mongoose");
 var validators = require('mongoose-validators');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var Schema = mongoose.Schema;
 
@@ -9,7 +10,8 @@ var UserSchema = new Schema({
   email: {
     type: String,
     required: true,
-    validate: validators.isEmail()
+    validate: validators.isEmail(),
+    unique: true
   },
   password: {
     type: String,
@@ -23,9 +25,11 @@ var UserSchema = new Schema({
     ref: "Note"
   }]
 });
-
+//unique validator plugin
+UserSchema.plugin(uniqueValidator);
 // Create the Model
 var User = mongoose.model("User", UserSchema);
+
 
 // Export it for use elsewhere
 module.exports = User;

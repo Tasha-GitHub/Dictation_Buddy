@@ -29,7 +29,7 @@ var Signup = React.createClass({
     }
     //stops the user from submitting blank fields
     if(data.email.length === 0 || data.password.length === 0){
-      alert("missing required fields")
+      alert("missing required fields");
     } else {
       helpers.createUser("/user/create", data)
       .then(function(res){
