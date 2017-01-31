@@ -128,9 +128,10 @@ var Main = React.createClass({
             </div>
             <hr/>
           </div>
-          <button type="button" className="btn btn-danger" onClick={self.deleteNote.bind(null, search._id)} id="delete" data-id={search._id}> Delete Note</button>
-          <button type="button" className="btn btn-info" id="open" data-id={search._id} data-toggle="modal" data-target={"#"+search._id}> Open Note</button>
-
+          <div className="buttonsDiv">
+            <button type="button" className="btn btn-danger" onClick={self.deleteNote.bind(null, search._id)} id="delete" data-id={search._id}> Delete Note</button>
+            <button type="button" className="btn btn-info" id="open" data-id={search._id} data-toggle="modal" data-target={"#"+search._id}> Open Note</button>
+          </div>
           <div className="modal fade" id={search._id} role="dialog">
             <div className="modal-dialog">
               <div className="modal-content">

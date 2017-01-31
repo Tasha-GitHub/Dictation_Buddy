@@ -10,6 +10,8 @@ var Footer = require("../components/footer");
 var helpers = require("../utils/helpers");
 //localStorage.clear();
 
+var swal = require("sweetalert");
+
 // Create the Parent Component
 var Main = React.createClass({
 
@@ -45,6 +47,7 @@ var Main = React.createClass({
   },
 
   speechRecorder: function(){
+    console.log("hi");
     var self = this;
     var transcript;      
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -96,7 +99,10 @@ var Main = React.createClass({
     }
     console.log(data)
     helpers.createNote("/note/save", data)
-    .then(alert("Note Saved"));
+    .then(
+      alert("Note Saved")
+      //swal("Here's a message!")
+    );
   },
 
   resetRecording: function(){
@@ -108,12 +114,6 @@ var Main = React.createClass({
     location.reload();
   },
 
-  stopRecording: function(){
-    this.setState({
-      recording: false
-    });
-    // window.location.reload();
-  },
   titleChange: function(event){
     this.setState({ 
       title: event.target.value
