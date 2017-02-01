@@ -30,7 +30,6 @@ var Login = React.createClass({
 
     helpers.logUser("/user/login", data)
     .then(function(res){
-      console.log(res.data.confirm)
       if(res.data.confirm === false){
         self.setState({ loginStatus: false, userID: false});
         localStorage.clear();
@@ -39,7 +38,6 @@ var Login = React.createClass({
         localStorage.setItem("userID", self.state.userID);
         localStorage.setItem("email", false);
       }else {
-        console.log(res);
         self.setState({ loginStatus: true, userID: res.data._id});
         localStorage.clear();
         // Store all content into localStorage
@@ -47,8 +45,8 @@ var Login = React.createClass({
         localStorage.setItem("userID", self.state.userID);
         localStorage.setItem("email", self.state.email);        
       }
-
-      location.reload();
+      //redirect to notes once logged in
+      location.href = "/notes";
     }); 
   }, 
   // Here we describe this component's render method
@@ -78,7 +76,7 @@ var Login = React.createClass({
               <br />
               <input
                 value={this.state.password}
-                type="text"
+                type="password"
                 className="form-control text-center"
                 id="term"
                 onChange={this.handlePassword}

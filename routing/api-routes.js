@@ -11,8 +11,6 @@ module.exports = function (app) {
   app.post("/note/all", function(req, res) {
     // Prepare a query to find all users..
     var id = req.body.id;
-    console.log(req.body)
-    console.log(id)
     User.find({ '_id': id })
       // ..and on top of that, populate the notes (replace the objectIds in the notes array with bona-fide notes)
       .populate("notes")
@@ -32,9 +30,7 @@ module.exports = function (app) {
   // Route to see what user looks like WITH populating
   app.post("/note/delete/:noteId", function(req, res) {
     // Prepare a query to find all users..
-    //var userId = req.body.userId;
     var noteId = req.params.noteId;
-    console.log(noteId)
     Note.remove({ '_id': noteId })
       // Now, execute the query
       .exec(function(error, doc) {
@@ -45,14 +41,13 @@ module.exports = function (app) {
         // Or send the doc to the browser
         else {
           res.redirect("/notes");
-          console.log("deleted");
         }
       });
   });
 
   app.post("/note/save", function(req, res) {
     var cleanTitle = sanitize(req.body.title);
-    console.log(cleanTitle);
+
     // Use our Note model to make a new note from the req.body
     var newNote = new Note({ 
       title: cleanTitle,
@@ -85,12 +80,10 @@ module.exports = function (app) {
 
     // New user creation via POST route
   app.post("/user/create", function(req, res) {
-    //console.log(req.body);
     var cleanEmail = sanitize(req.body.email);
     var cleanPassword = sanitize(req.body.password);
     var password = cleanPassword;
     var email = cleanEmail;
-    //console.log(password)
     bcrypt.hash(password, null, null, function (err, hash) {
       var exampleUser = new User({
         email: email,
@@ -104,10 +97,7 @@ module.exports = function (app) {
         }
         // Or log the doc
         else {
-          //console.log(doc);
           res.send(doc);
-          // res.redirect("/");
-
         }
       });
     });
@@ -118,13 +108,11 @@ module.exports = function (app) {
     var cleanPassword = sanitize(req.body.password);
     var email = cleanEmail;
     var password = cleanPassword;
-    //console.log("/login: ", userLogin);
     User.findOne({ email: email })
     .exec(function(error, result) {
       if (error){
         console.log(error);
       } else {
-        console.log(result);
         //if there were no  matching results in the DB, it will send back false instead
         //throwing errors
         if(result == null) {

@@ -40,7 +40,7 @@ var Signup = React.createClass({
         localStorage.setItem("loginStatus", self.state.loginStatus);
         localStorage.setItem("userID", self.state.userID);
         localStorage.setItem("email", self.state.email);
-        location.reload();
+        location.href = "/notes";
       }); 
     }
   }, 
@@ -71,7 +71,7 @@ var Signup = React.createClass({
               <br />
               <input
                 value={this.state.password}
-                type="text"
+                type="password"
                 className="form-control text-center"
                 id="term"
                 onChange={this.handlePassword}
