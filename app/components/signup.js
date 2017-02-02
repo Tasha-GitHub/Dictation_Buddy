@@ -1,6 +1,7 @@
 // Include React
 var React = require("react");
 var helpers = require("../utils/helpers");
+var NotificationSystem = require('react-notification-system');
 
 // Creating the Form component
 var Signup = React.createClass({
@@ -21,6 +22,20 @@ var Signup = React.createClass({
 
   },
 
+  _notificationSystem: null,
+
+  _addNotification: function(message, level) {
+    this._notificationSystem.addNotification({
+      message: message,
+      level: level,
+      position: "bl"
+    });
+  },
+
+  componentDidMount: function(){
+    this._notificationSystem = this.refs.notificationSystem;
+  },
+
   saveUser: function(){
     var self = this;
     var data = {
@@ -29,11 +44,11 @@ var Signup = React.createClass({
     }
     //stops the user from submitting blank fields
     if(data.email.length === 0 || data.password.length === 0){
-      alert("missing required fields");
+      self._addNotification("missing required fields","warning");
+
     } else {
       helpers.createUser("/user/create", data)
       .then(function(res){
-        console.log(res)
         self.setState({ loginStatus: true, userID: res.data._id});
         localStorage.clear();
         // Store all content into localStorage
@@ -48,6 +63,7 @@ var Signup = React.createClass({
   render: function() {
     return (
       <div className="col-md-3 signUpDiv">
+      <NotificationSystem ref="notificationSystem" />
         <form>
           <div className="form-group">
               <h4 className="">

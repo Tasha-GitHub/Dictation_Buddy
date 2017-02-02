@@ -10,7 +10,7 @@ var Footer = require("../components/footer");
 var helpers = require("../utils/helpers");
 //localStorage.clear();
 
-var swal = require("sweetalert");
+var NotificationSystem = require('react-notification-system');
 
 // Create the Parent Component
 var Main = React.createClass({
@@ -27,11 +27,21 @@ var Main = React.createClass({
       userID: ""
     };
   },
+  
+  _notificationSystem: null,
+
+  _addNotification: function(message, level) {
+    this._notificationSystem.addNotification({
+      message: message,
+      level: level,
+      position: "bl"
+    });
+  },
 
   componentDidMount: function(){
+    this._notificationSystem = this.refs.notificationSystem;
     var userID = localStorage.getItem("userID");
     var loginStatus = localStorage.getItem("loginStatus");
-    console.log(loginStatus);
     // grabs user id from local storage and stores it as a state value
     if (loginStatus == null) {
       //console.log("bye")
@@ -47,7 +57,6 @@ var Main = React.createClass({
   },
 
   speechRecorder: function(){
-    console.log("hi");
     var self = this;
     var transcript;      
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -67,7 +76,7 @@ var Main = React.createClass({
       .join("")
       
       //transcript = "\n" + self.state.body + " " + transcript;
-      console.log(transcript);
+      //console.log(transcript);
       p.textContent = transcript;
       if(event.results[0].isFinal){
         self.setState({
@@ -82,26 +91,31 @@ var Main = React.createClass({
   },
 
   saveRecording: function(prevProps, prevState){
+    var self = this;
     var loginStatus = localStorage.getItem("loginStatus");
     if(this.state.title === ""){
-      console.log("title required");
-      alert("Title is a required field");
+      self._addNotification("Title is a required field","warning");
       return
     }
     if(loginStatus == null){
-      alert("Please Sign in to Save a Note");
+      self._addNotification("Please Sign in to Save a Note","warning");
       return
     }
+
+    if(loginStatus === "false"){
+      self._addNotification("Please Sign in to Save a Note","warning");
+      return
+    }
+    
     var data = {
       title: this.state.title,
       body: this.state.body,
       id: this.state.userID
     }
-    console.log(data)
+
     helpers.createNote("/note/save", data)
     .then(
-      alert("Note Saved")
-      //swal("Here's a message!")
+      self._addNotification("Note Successfully Saved","success")
     );
   },
 
@@ -121,8 +135,10 @@ var Main = React.createClass({
   },
   // Here we render the function
   render: function() {
+    var self = this;
     return (
       <div className="container">
+      <NotificationSystem ref="notificationSystem" />
         <div className="content">
           <Nav />
           <div className="row components">
